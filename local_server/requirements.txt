@@ -1,0 +1,16 @@
+aio-pika
+pika
+psycopg2-binary
+sqlalchemy
+sqlacodegen
+pydantic
+cryptography
+requests
+deepface
+pillow
+pyotp
+pyzbar
+easyocr
+tf-keras
+ultralytics
+opencv-contrib-python

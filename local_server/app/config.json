@@ -1,0 +1,10 @@
+{
+    "ident":"put_the_generated_id_here",
+    "host_port":"8001",
+
+    "cert_storage":"./CERTSTORE",
+
+    "rpc_host":"amqp://guest:guest@localhost/",
+    "db_host":"postgresql://postgres:postgres@localhost:5434/main",
+    "main_host":"http://localhost"
+}

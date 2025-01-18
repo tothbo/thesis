@@ -1,0 +1,9 @@
+{
+    "chime":15,
+    "relay":14,
+    "button":13,
+    "button_time":3,
+    "auth_time":3,
+    "cam_conn":false,
+    "nfc_conn":true
+}

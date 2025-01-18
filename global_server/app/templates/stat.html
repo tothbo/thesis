@@ -1,0 +1,160 @@
+<!doctype html>
+<html lang="hu">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ nickname }} :: ServerDirectConnect :: DoorD</title>
+        <link href="/u_static/bootstrap.min.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <style>
+            .work-sans-fnt {
+                font-family: "Work Sans", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 500;
+                font-style: normal;
+            }
+            .work-sans-lite {
+                font-family: "Work Sans", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 400;
+                font-style: normal;
+            }
+            .form-label{
+                font-family: "Work Sans", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 400;
+                font-style: normal;
+            }
+            .card-title{
+                font-family: "Work Sans", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 500;
+                font-style: normal;
+            }
+            .btn{
+                font-family: "Work Sans", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 400;
+                font-style: normal;
+                opacity: 1;
+                transition: opacity 1s ease-in-out;
+            }
+            .btn-primary{
+                background-color: {{ color }} !important;
+                border-color: {{ color }} !important;
+            }
+            .btn-primary:active, .btn-primary.active, .open>.dropdown-toggle.btn-primary{
+                background-color: {{ color }} !important;
+                border-color: {{ color }} !important;
+            }
+            .btn-user{
+                font-size:0.5rem;
+            }
+            .card-body{
+                transition: min-width 1s ease-in-out;
+            }
+            .fader {
+                transition: width 1s ease-in-out;
+            }
+            .fullscreen{
+                height: 100vh;
+            }
+            .spinner-grow {
+                background-color: {{ color }};
+            }
+            @keyframes assign_preselect_keyframe {
+                0% { transform: translate(0, 0) rotate(0deg); }
+                25% { transform: translate(5px, 5px) rotate(5deg); }
+                50% { transform: translate(0, 0) rotate(0eg); }
+                75% { transform: translate(-5px, 5px) rotate(-5deg); }
+                100% { transform: translate(0, 0) rotate(0deg); }
+            }
+            .assign_preselect {
+                animation: assign_preselect_keyframe 0.5s;
+                animation-iteration-count: 3;
+            }
+            .o_cam_card {
+                width: 20rem;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid fullscreen">
+            <nav class="navbar d-md-block d-lg-none">
+                <div class="container-fluid">
+                  <a class="navbar-brand work-sans-fnt" href="#">navigation</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse container" id="navbarSupportedContent">
+                    <div class="row">
+                        <div class="col-6">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-md-block">
+                                <li class="nav-item">
+                                  <a href="#cardHolderCam" class="btn btn-light">cameras</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a href="#cardHolderStats" class="btn btn-light mt-1">stats</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-md-block">
+                                <li class="nav-item">
+                                    <button type="button" class="btn btn-light" onclick="window.location.href = '/server?serverid={{ server_id }}';">sett. view</button>
+                                </li>
+                                <li class="nav-item">
+                                    <button type="button" class="btn btn-light mt-1" onclick="window.location.href = '/';">home</button>
+                                </li>
+                                <li class="nav-item">
+                                    <button type="button" class="btn btn-light mt-1" onclick="window.location.href = '/logout';">logout</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </nav>
+            <section class="row align-items-start fullscreen">
+                <div class="col-1 d-none d-lg-flex flex-column align-items-center row-gap-3 fullscreen mt-3">
+                    <!-- left navbar -->
+                    <a href="#cardHolderCam" class="btn btn-light w-50 mb-5 pb-1"><span class="material-symbols-outlined">nest_cam_outdoor</span></a>
+                    <a href="#cardHolderStats" class="btn btn-light w-50 mb-5 pb-1"><span class="material-symbols-outlined">analytics</span></a>
+
+                    <button type="button" class="btn btn-light w-50 mt-auto pb-1" onclick="window.location.href = '/server?serverid={{ server_id }}';"><span class="material-symbols-outlined">developer_board</span></button>
+                    <button type="button" class="btn btn-light w-50 pb-1" onclick="window.location.href = '/';"><span class="material-symbols-outlined">logout</span></button>
+                    <button type="button" class="btn btn-light w-50 mb-5 pb-1" onclick="window.location.href = '/logout';"><span class="material-symbols-outlined">move_item</span></button>
+                </div>
+                <div class="col-11 mt-3">
+                    <p class="work-sans-fnt fs-3" style='color: {{ color }} '>{{ nickname }}</p>
+                    <input type="hidden" id="serverid" name="serverid", value="{{ server_id }}"/>
+                    <input type="hidden" id="server_color" name="server_color", value="{{ color }}"/>
+                    <p class="work-sans-fnt fs-3">cameras &nbsp;<a onclick="new_cam();" class="btn btn-outline-secondary d-none" id="cardNewCam">new</a></p>
+                    <div class="row align-items-start" id="sCardHolderCam">
+                        <div class="d-flex column-gap-3" id="cardHolderCam">
+                            <div class="spinner-grow text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="work-sans-fnt fs-3 mt-5">statistics</p>
+                    <div class="row align-items-start">
+                        <div class="col-10" id="cardHolderStats">
+                            <div class="spinner-grow text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <script src="/u_static/jquery.min.js"></script>
+        <script src="/u_static/bootstrap.bundle.min.js"></script>
+        <script src="/p_static/stat.js"></script>
+        <script src="/u_static/jsOTP.min.js"></script>
+        <script src="/u_static/qrcode.min.js"></script>
+    </body>
+</html>

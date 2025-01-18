@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="hu">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>{{ page_title }} :: DoorD</title>
+        <link href="/u_static/bootstrap.min.css" rel="stylesheet" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link href="https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+        <style>
+            .work-sans-fnt {
+            font-family: "Work Sans", sans-serif;
+            font-optical-sizing: auto;
+            font-weight: 500;
+            font-style: normal;
+            }
+            .work-sans-lite {
+                font-family: "Work Sans", sans-serif;
+                font-optical-sizing: auto;
+                font-weight: 400;
+                font-style: normal;
+            }
+            .fullscreen{
+                height: 100vh;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container-fluid fullscreen">
+            <nav class="navbar d-md-block d-lg-none">
+                <div class="container-fluid">
+                  <a class="navbar-brand work-sans-fnt" href="#">navigation</a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse container" id="navbarSupportedContent">
+                    <div class="row">
+                        <div class="col-6">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-md-block">
+                                <li class="nav-item">
+                                  <a href="#cardHolderUserServers" class="btn btn-light">user servers</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a href="#cardHolderAdminServers" class="btn btn-light mt-1">admin. servers</a>
+                                </li>
+                                <li class="nav-item">
+                                  <a href="#cardHolderNonAvialableServers" class="btn btn-light mt-1">non-d. servers</a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-6">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0 d-md-block">
+                                <li class="nav-item">
+                                    <button type="button" onclick="change_pass(true);" data-bs-toggle="modal" data-bs-target="#settingsModal" class="btn btn-light">settings</button>
+                                </li>
+                                <li class="nav-item">
+                                    <button type="button" class="btn btn-light mt-1" onclick="window.location.href = '/logout';">logout</button>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+            </nav>
+            <section class="row align-items-start fullscreen">
+                <div class="col-1 d-none d-lg-flex flex-column align-items-center row-gap-3 fullscreen mt-3">
+                    <!-- left navbar -->
+                    <a href="#cardHolderUserServers" class="btn btn-light w-50 mb-5 pb-1"><span class="material-symbols-outlined">nest_doorbell_visitor</span></a>
+                    <a href="#cardHolderAdminServers" class="btn btn-light w-50 mb-5 pb-1"><span class="material-symbols-outlined">doorbell_chime</span></a>
+                    <a href="#cardHolderNonAvialableServers" class="btn btn-light w-50 mb-5 pb-1"><span class="material-symbols-outlined">nest_hello_doorbell</span></a>
+
+                    <button type="button" onclick="change_pass(true);" data-bs-toggle="modal" data-bs-target="#settingsModal" class="btn btn-light w-50 mt-auto pb-1"><span class="material-symbols-outlined">settings</span></button>
+                    <button type="button" class="btn btn-light w-50 mb-5 pb-1" onclick="window.location.href = '/logout';"><span class="material-symbols-outlined">move_item</span></button>
+                </div>
+                <div class="col-11 mt-3">
+                    <!-- content navbar -->
+                    <p class="work-sans-fnt fs-3">user servers</p>
+                    <div class="row align-items-start">
+                        <div class="d-flex flex-wrap column-gap-3 row-gap-3" id="cardHolderUserServers">
+                            <div class="spinner-grow text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="work-sans-fnt fs-3 mt-5">administered servers</p>
+                    <div class="row align-items-start">
+                        <div class="d-flex flex-wrap column-gap-3 row-gap-3" id="cardHolderAdminServers">
+                            <div class="spinner-grow text-primary" role="status">
+                                <span class="visually-hidden">Loading...</span>
+                            </div>
+                        </div>
+                    </div>
+                    <p class="work-sans-fnt fs-3 mt-5">non-deployed servers</p>
+                    <div class="row align-items-start">
+                        <div class="d-flex flex-wrap column-gap-3 row-gap-3" id="cardHolderNonAvialableServers">
+                            
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="modal fade" id="settingsModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="settingsModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h1 class="modal-title fs-5 work-sans-lite" id="settingsModalLabel">settings</h1>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body container-fluid text-center">
+                        <form novalidate>
+                            <div class="mb-3">
+                                <label for="settingsModalPasswd" class="form-label work-sans-lite">password</label>
+                              <input type="password" class="form-control work-sans-fnt" id="settingsModalPasswd" />
+                            </div>
+                            <div class="mb-3">
+                               <label for="settingsModalRePasswd" class="form-label work-sans-lite">password again</label>
+                              <input type="password" class="form-control work-sans-fnt" id="settingsModalRePasswd" />
+                            </div>
+                            <a onclick="change_pass();" class="btn btn-outline-primary col-3 work-sans-lite" id="settingsModalBtn">submit</a>
+                      </form>
+                    </div>
+              </div>
+            </div>
+        </div>
+        <script src="/u_static/jquery.min.js"></script>
+        <script src="/u_static/bootstrap.bundle.min.js"></script>
+        <script src="/u_static/index.js"></script>
+    </body>
+</html>

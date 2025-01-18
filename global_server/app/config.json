@@ -1,0 +1,12 @@
+{
+    "host_port":8000,
+
+    "cert_storage":"/app/certs",
+    "secret_key":"2b517b5a01f0d7bc7c5c074a50754122a9968b1c3dba0e33fc43cda6b01d5a30",
+    "algorith":"HS256",
+    "key_expires":30,
+    "devmode":true,
+
+    "rpc_host":"amqp://guest:guest@rabbitmq/",
+    "db_host":"postgresql://postgres:postgres@db:5432/main"
+}

@@ -1,0 +1,16 @@
+uvicorn
+pyjwt
+requests
+fastapi
+pydantic
+pydantic[email]
+sqlalchemy
+python-multipart
+cryptography
+aio_pika
+psycopg2-binary
+jinja2
+argon2-cffi
+asyncio
+pyotp
+passlib
